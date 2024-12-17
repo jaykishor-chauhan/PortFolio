@@ -3,7 +3,6 @@ import SocialHandles from "./SocialHandles";
 import { FaDownload } from "react-icons/fa";
 
 const Profile = () => {
-
   return (
     <section className="text-gray-600 body-font pt-16 lg:min-h-75vh lg:pb-[179px] lg:pt-[91px]">
       <div className="p-8 mx-auto gap-2 flex flex-col md:pt-12 md:px-7 lg:py-20 lg:flex-row-reverse items-center min-h-fit">
@@ -12,7 +11,7 @@ const Profile = () => {
           data-aos="zoom-in-up"
           data-aos-duration="1000"
           data-aos-once="false"
-          className="w-5/6 sm:max-w-xs md:max-w-sm lg:max-w-md sm:w-2/6 lg:mr-10 xl:mr-20 lg:p-5 lg:w-1/3 xl:w-1/4 flex-none"
+          className="w-full sm:max-w-xs md:max-w-sm lg:max-w-md sm:w-2/6 lg:mr-10 xl:mr-20 lg:p-5 lg:w-1/3 xl:w-1/4 flex-none"
         >
           <img
             className="object-cover object-center bg-[#b9aeb6] border-[1.1px] border-dark-orange pointer-events-none rounded-full backdrop-contrast-200 backdrop-brightness-200"
@@ -22,12 +21,12 @@ const Profile = () => {
         </div>
 
         {/* Text Section */}
-        <div className="font-mono lg:flex-grow lg:pr-4 lg:mr-14 flex flex-col md:mb-0 items-start text-start xl:scale-105">
+        <div className="font-mono lg:flex-grow flex flex-col md:mb-0 items-start text-start xl:scale-105 lg:pt-[2.7rem] lg:pl-[7rem]">
           <p
             data-aos="zoom-in-up"
             data-aos-duration="1500"
             data-aos-once="false"
-            className="px-28 md:text-4xl text-2xl mb-4 text-start font-medium text-white"
+            className="px-4 sm:px-[38px] md:text-4xl text-[1.2rem] mb-4 text-start font-medium text-white"
           >
             Hello, I'm
           </p>
@@ -35,7 +34,7 @@ const Profile = () => {
             data-aos="zoom-in-up"
             data-aos-duration="1500"
             data-aos-once="false"
-            className="px-28 title-font md:text-6xl text-4xl mb-4 text-start font-medium text-white"
+            className="px-4 sm:px-8 title-font md:text-6xl text-[1.76rem] mb-4 text-start font-medium text-white"
           >
             <span className="text-dark-orange">Jaykishor Chauhan</span>
           </h1>
@@ -43,12 +42,13 @@ const Profile = () => {
             data-aos="zoom-in-up"
             data-aos-duration="1500"
             data-aos-once="false"
-            className="px-28 text-2xl text-white mb-4 font-medium lg:inline-block"
+            className="px-4 sm:px-[38px] text-[1.2rem] text-white mb-4 font-medium lg:inline-block"
             style={{
-              minHeight: "6rem", // Ensure a minimum height for the text container
+              minHeight: "4rem", // Ensure a minimum height for the text container
               overflow: "hidden", // Prevent overflow and layout shift
               whiteSpace: "normal", // Allow wrapping of long sentences
               wordBreak: "break-word", // Break words if necessary
+              wordWrap: "break-word", // Ensures text wraps properly
             }}
           >
             <TypeAnimation
@@ -94,7 +94,7 @@ const Profile = () => {
             data-aos="zoom-in-up"
             data-aos-duration="2000"
             data-aos-once="false"
-            className="px-28 mb-2 text-white text-lg md:text-xl leading-relaxed"
+            className="hidden md:block px-4 sm:px-8 mb-2 text-white text-lg md:text-xl leading-relaxed"
           >
             I'm proficient in building web applications using React.
           </p>
@@ -102,7 +102,7 @@ const Profile = () => {
             data-aos="zoom-in-up"
             data-aos-duration="2000"
             data-aos-once="false"
-            className="pl-28 text-lg text-white md:text-xl"
+            className="hidden md:block pl-4 sm:pl-8 text-lg text-white md:text-xl"
           >
             I enjoy designing tech websites.
           </p>
@@ -110,7 +110,7 @@ const Profile = () => {
             data-aos="zoom-in-up"
             data-aos-duration="2000"
             data-aos-once="false"
-            className="px-28 mt-7 flex gap-x-4 md:gap-x-5 justify-center md:justify-between"
+            className="px-4 sm:px-8 mt-7 flex gap-x-4 md:gap-x-5 justify-center md:justify-between flex-col sm:flex-row"
           >
             <a
               href="https://raw.githubusercontent.com/jaykishor-chauhan/resume/main/resume.pdf"

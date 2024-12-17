@@ -23,22 +23,20 @@ const DarkModeToggle = () => {
         data-aos="zoom-in"
         data-aos-duration="1000"
         data-aos-once="false"
-        className="fixed top-[7.5rem] right-[3rem] z-50"
+        className="fixed md:top-[7.5rem] md:right-[3rem] top-[5rem] right-[1rem] z-50"
     >
       <button
             onClick={toggleDarkMode}
             className={`p-3 rounded-full shadow-lg transition duration-300 focus:outline-none
                 ${darkMode ? 'bg-black text-white' : 'bg-white text-black'} `}
-            // title={darkMode ? 'Light Mode' : 'Dark Mode'}
             title="It is under maintenance"
-            >
-            {darkMode ? (
-                <FaSun className="w-6 h-6" />
-            ) : (
-                <FaMoon className="w-6 h-6" />
-            )}
-        </button>
-
+      >
+        {darkMode ? (
+            <FaSun className="sm:w-6 sm:h-6 w-4 h-4" />
+        ) : (
+            <FaMoon className="sm:w-6 sm:h-6 w-4 h-4" />
+        )}
+      </button>
     </div>
   );
 };
