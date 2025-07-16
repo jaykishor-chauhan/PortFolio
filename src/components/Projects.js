@@ -1,152 +1,187 @@
-import React, { useRef } from 'react';
-import { FaExternalLinkAlt, FaGithub } from "react-icons/fa";
-import ProjectsData from "./ProjectsData";
+import React, { useEffect, useState } from 'react';
+import { ExternalLink, Github, ChevronLeft, ChevronRight } from 'lucide-react';
+import ProjectsData from './ProjectsData';
+
+const Card = ({ children, className }) => (
+  <div className={`bg-white/80 rounded-3xl shadow-2xl border border-blue-100 ${className}`}>{children}</div>
+);
+const CardContent = ({ children, className }) => (
+  <div className={className}>{children}</div>
+);
+const Badge = ({ children, className }) => (
+  <span className={`inline-block rounded-full font-semibold ${className}`}>{children}</span>
+);
 
 const Projects = () => {
-  const scrollRef = useRef(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoScrolling, setIsAutoScrolling] = useState(true);
 
-  // Function to handle scrolling
-  const scroll = (direction) => {
-    if (scrollRef.current) {
-      // Scroll by 300px left or right depending on the direction
-      const scrollAmount = direction === 'left' ? -300 : 300;
-      scrollRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
+  // Auto-scroll functionality
+  useEffect(() => {
+    if (!isAutoScrolling) return;
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) =>
+        prevIndex >= ProjectsData.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [isAutoScrolling]);
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? ProjectsData.length - 1 : prev - 1));
+    setIsAutoScrolling(false);
   };
 
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev === ProjectsData.length - 1 ? 0 : prev + 1));
+    setIsAutoScrolling(false);
+  };
+
+  const currentProject = ProjectsData[currentIndex];
+
   return (
-    <section className="text-gray-600 body-font">
-      <div className="px-3 py-5 mx-auto text-center sm:mx-6 md:mx-12 md:pt-5 md:mt-5 xl:mx-40">
-        <div
-          id="projects"
-          className="flex flex-wrap w-full flex-col items-center text-center"
-        >
-          <h1 className="sm:text-4xl text-3xl font-medium title-font mb-3 text-gray-900">
-            Projects
+    <section id="projects" className="py-24 bg-gradient-to-br from-blue-50 via-white to-blue-100 relative overflow-hidden">
+      {/* Decorative Blobs */}
+      <div className="absolute -top-32 -left-32 w-96 h-96 bg-gradient-to-br from-blue-300/30 to-emerald-200/20 rounded-full blur-3xl z-0"></div>
+      <div className="absolute -bottom-32 -right-32 w-96 h-96 bg-gradient-to-tr from-emerald-200/30 to-blue-300/20 rounded-full blur-3xl z-0"></div>
+      <div className="container mx-auto px-4 relative z-10">
+
+        <div className="text-center mb-16 space-y-6">
+          <h1 className="text-4xl lg:text-5xl xl:text-6xl font-bold text-slate-900">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-orange-600">
+              Project
+            </span>{" "}
+            <span className="text-slate-800">Highlights</span>
           </h1>
-          <div className="flex items-center justify-center">
-            {/* Left Line */}
-            <div
-              className="border-t border-black"
-              style={{ width: "0.4cm", borderTopWidth: "2.5px" }}
-            ></div>
-
-            {/* Text */}
-            <p
-              data-aos="zoom-in"
-              data-aos-duration="1000"
-              data-aos-once="false"
-              className="mx-4 text-lg font-medium leading-relaxed text-dark-orange"
-            >
-              My Works
+          <div className="flex items-center justify-center gap-4">
+            <div className="w-12 h-0.5 bg-gradient-to-r from-transparent to-emerald-600" />
+            <p className="text-lg font-medium text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-blue-600 tracking-wide">
+              Real-World Applications
             </p>
-
-            {/* Right Line */}
-            <div
-              className="border-t border-black"
-              style={{ width: "0.4cm", borderTopWidth: "2.5px" }}
-            ></div>
+            <div className="w-12 h-0.5 bg-gradient-to-r from-emerald-600 to-transparent" />
           </div>
         </div>
 
-        {/* Horizontal Scrollable Section with Buttons */}
-        <div className="mt-4 md:mt-8 relative">
-          {/* Left Scroll Button */}
+        {/* Project Card with Sliding Effect */}
+        <div className="flex justify-center items-center relative max-w-5xl mx-auto">
+          {/* Left Arrow */}
           <button
-            onClick={() => scroll('left')}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-dark-orange text-white hover:bg-cornsilk hover:border-2 hover:text-black font-bold hover:border-dark-orange  p-3 rounded-full shadow-md z-10"
+            onClick={handlePrev}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-blue-100 border border-blue-200 rounded-full p-2 shadow transition disabled:opacity-50"
+            aria-label="Previous Project"
           >
-            &#60;
+            <ChevronLeft className="w-6 h-6 text-blue-700" />
           </button>
 
-          {/* Right Scroll Button */}
-          <button
-            onClick={() => scroll('right')}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 text-white bg-dark-orange hover:bg-cornsilk hover:border-2 hover:text-black font-bold hover:border-dark-orange p-3 rounded-full shadow-md z-10"
-          >
-            &#62;
-          </button>
-
-          {/* Scrollable Container */}
-          <div ref={scrollRef} className="overflow-x-auto scrollbar-hide p-[1.5rem]">
-            <div className="flex " >
-              {ProjectsData.reverse().map((project) => (
-                <div
-                  data-aos="zoom-in-up"
-                  data-aos-duration="1000"
-                  data-aos-once="false"
-                  key={project.id}
-                  className="group relative flex flex-col flex-wrap h-[400px] min-w-[330.7px] w-[600px] shadow-xl rounded-xl mr-[1.5rem]"
-                >
-                  <img
-                    src={project.image}
-                    alt={project.name}
-                    className="h-80 rounded-xl h-[400px]"
-                  />
-                  <div className="absolute flex flex-col justify-center items-center bottom-0 left-0 right-0 h-0 overflow-hidden group-hover:h-full transition-[height_0.5s] duration-500 bg-darkblue rounded-xl">
-                    <h3
-                      data-aos="zoom-in-up"
-                      data-aos-duration="1000"
-                      data-aos-once="false"
-                      className="text-2xl font-medium text-white my-2"
-                    >
-                      {project.name}
-                    </h3>
-                    <p
-                      data-aos="zoom-in-up"
-                      data-aos-duration="1000"
-                      data-aos-once="false"
-                      className="px-2 text-lg text-white"
-                    >
-                      {project.description}
-                    </p>
-                    <div
-                      data-aos="zoom-in-up"
-                      data-aos-duration="1000"
-                      data-aos-once="false"
-                      className="flex flex-wrap items-center gap-3 mt-3"
-                    >
-                      {project?.icons?.map((Icon, index) => (
-                        <div className="rounded-full p-2" key={index}>
-                          <Icon className="text-white text-4xl font-bold" />
-                        </div>
-                      ))}
-                    </div>
-                    <div
-                      data-aos="zoom-in-up"
-                      data-aos-duration="1000"
-                      data-aos-once="false"
-                      className="flex gap-7 justify-center items-center my-7 text-2xl"
-                    >
-                      <div className="bg-white rounded-full p-2">
-                        <a
-                          className="text-darkblue text-xl bg-white"
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <FaGithub />
-                        </a>
-                      </div>
-                      <div className="bg-white rounded-full p-2">
-                        <a
-                          className="text-darkblue text-xl bg-white"
-                          href={project.demo}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          <FaExternalLinkAlt className="p-[1px]" />
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
+          <Card className="group w-full max-w-4xl h-[540px] flex flex-col md:flex-row overflow-hidden transition-all duration-700 hover:shadow-2xl border-2 border-blue-100 bg-gradient-to-br from-white via-blue-50 to-emerald-50">
+            {/* Project Image */}
+            <div className="relative md:w-1/2 w-full flex items-center justify-center bg-gradient-to-br from-blue-100 via-white to-emerald-100">
+              <img
+                src={currentProject.image}
+                alt={currentProject.name}
+                className="w-full h-80 md:h-full object-cover rounded-2xl shadow-lg transition-transform duration-700 group-hover:scale-105"
+                style={{ maxWidth: '90%', maxHeight: '90%' }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-blue-900/10 group-hover:to-blue-900/20 transition-all duration-300" />
             </div>
-          </div>
+
+            {/* Project Details */}
+            <CardContent className="md:w-1/2 w-full p-8 flex flex-col justify-between">
+              <div>
+                <h3 className="text-3xl md:text-4xl font-bold text-blue-900 mb-4 group-hover:text-blue-600 transition-colors duration-300 drop-shadow">
+                  {currentProject.name}
+                </h3>
+                <p className="text-gray-700 text-lg leading-relaxed mb-6 font-medium">
+                  {currentProject.description}
+                </p>
+                {/* Tech Stack */}
+                <div className="flex flex-wrap gap-4 mb-8">
+                  {currentProject.icons.map((tech, techIndex) => {
+                    if (typeof tech === "object" && tech.icon && tech.name) {
+                      return (
+                        <span key={techIndex} className="relative group">
+                          <Badge
+                            title={tech.name}
+                            className="flex items-center justify-center text-2xl px-4 py-3 bg-gradient-to-r from-blue-100 to-orange-100 text-blue-700 border border-blue-200 hover:bg-blue-200 transition-colors duration-300 shadow cursor-pointer"
+                          >
+                            {React.createElement(tech.icon)}
+                          </Badge>
+                        </span>
+                      );
+                    }
+                    // Fallback for string or icon only
+                    return (
+                      <span key={techIndex} className="relative group">
+                        <Badge
+                          title={typeof tech === "string" ? tech : ""}
+                          className="flex items-center justify-center text-2xl px-4 py-3 bg-gradient-to-r from-blue-100 to-orange-100 text-blue-700 border border-blue-200 hover:bg-blue-200 transition-colors duration-300 shadow cursor-pointer"
+                        >
+                          {typeof tech === "function" ? tech() : tech}
+                        </Badge>
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
+              {/* Action buttons */}
+              <div className="flex gap-4 mt-4">
+                <a
+                  href={currentProject.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 flex items-center justify-center gap-2 px-5 py-3 rounded-full bg-blue-600 text-white font-semibold shadow hover:bg-blue-700 transition-all duration-300"
+                >
+                  <Github className="h-5 w-5" />
+                  Source Code
+                </a>
+                <a
+                  href={currentProject.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 flex items-center justify-center gap-2 px-5 py-3 rounded-full border border-blue-400 text-blue-700 font-semibold bg-white shadow hover:bg-blue-50 transition-all duration-300"
+                >
+                  <ExternalLink className="h-5 w-5" />
+                  Live Demo
+                </a>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Right Arrow */}
+          <button
+            onClick={handleNext}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-white/80 hover:bg-blue-100 border border-blue-200 rounded-full p-2 shadow transition disabled:opacity-50"
+            aria-label="Next Project"
+          >
+            <ChevronRight className="w-6 h-6 text-blue-700" />
+          </button>
+        </div>
+
+        {/* Progress Indicators */}
+        <div className="flex justify-center mt-10 gap-2">
+          {ProjectsData.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                setCurrentIndex(index);
+                setIsAutoScrolling(false);
+              }}
+              className={`h-3 rounded-full transition-all duration-300 ${index === currentIndex
+                ? 'w-10 bg-blue-600'
+                : 'w-3 bg-gray-300 hover:bg-blue-400'
+                }`}
+              aria-label={`Go to project ${index + 1}`}
+            />
+          ))}
+        </div>
+
+        {/* Project Counter */}
+        <div className="text-center mt-6">
+          <span className="text-gray-500 text-base font-semibold tracking-wide">
+            {currentIndex + 1} <span className="text-blue-600">/</span> {ProjectsData.length}
+          </span>
         </div>
       </div>
-      <div className='h-[2.5rem]'></div>
     </section>
   );
 };

@@ -60,7 +60,7 @@ const SkillsData = [
     image: require("../assets/Images/java.png")
   },
   {
-    id: "12",
+    id: "13",
     name: "Python",
     image: require("../assets/Images/python.png")
   },

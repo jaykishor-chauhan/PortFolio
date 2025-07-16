@@ -1,133 +1,141 @@
 import { TypeAnimation } from "react-type-animation";
 import SocialHandles from "./SocialHandles";
-import { FaDownload } from "react-icons/fa";
+import { Download, ArrowDown } from "lucide-react";
+
 
 const Profile = () => {
   return (
-    <section className="text-gray-600 body-font pt-16 lg:min-h-75vh lg:pb-[179px] lg:pt-[91px]">
-      <div className="p-8 mx-auto gap-2 flex flex-col md:pt-12 md:px-7 lg:py-20 lg:flex-row-reverse items-center min-h-fit">
-        {/* Image Section */}
-        <div
-          data-aos="zoom-in-up"
-          data-aos-duration="1000"
-          data-aos-once="false"
-          className="w-full sm:max-w-xs md:max-w-sm lg:max-w-md sm:w-2/6 lg:mr-10 xl:mr-20 lg:p-5 lg:w-1/3 xl:w-1/4 flex-none"
-        >
-          <img
-            className="object-cover object-center bg-[#b9aeb6] border-[1.1px] border-dark-orange pointer-events-none rounded-full backdrop-contrast-200 backdrop-brightness-200"
-            alt="Jaykishor"
-            src={require("../assets/Images/Profile0.png")}
-          />
-        </div>
+    <section className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 bg-grid-slate-200/60 [mask-image:radial-gradient(ellipse_at_center,white,transparent)]" />
+      <div className="absolute top-20 right-20 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob" />
+      <div className="absolute top-40 left-20 w-72 h-72 bg-purple-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000" />
+      <div className="absolute bottom-20 left-40 w-72 h-72 bg-pink-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000" />
 
-        {/* Text Section */}
-        <div className="font-mono lg:flex-grow flex flex-col md:mb-0 items-start text-start xl:scale-105 lg:pt-[2.7rem] lg:pl-[7rem]">
-          <p
-            data-aos="zoom-in-up"
-            data-aos-duration="1500"
-            data-aos-once="false"
-            className="px-4 sm:px-[38px] md:text-4xl text-[1.2rem] mb-4 text-start font-medium text-white"
-          >
-            Hello, I'm
-          </p>
-          <h1
-            data-aos="zoom-in-up"
-            data-aos-duration="1500"
-            data-aos-once="false"
-            className="px-4 sm:px-8 title-font md:text-6xl text-[1.76rem] mb-4 text-start font-medium text-white"
-          >
-            <span className="text-dark-orange">Jaykishor Chauhan</span>
-          </h1>
-          <div
-            data-aos="zoom-in-up"
-            data-aos-duration="1500"
-            data-aos-once="false"
-            className="px-4 sm:px-[38px] text-[1.2rem] text-white mb-4 font-medium lg:inline-block"
-            style={{
-              minHeight: "4rem", // Ensure a minimum height for the text container
-              overflow: "hidden", // Prevent overflow and layout shift
-              whiteSpace: "normal", // Allow wrapping of long sentences
-              wordBreak: "break-word", // Break words if necessary
-              wordWrap: "break-word", // Ensures text wraps properly
-            }}
-          >
-            <TypeAnimation
-              cursor={true}
-              sequence={[
-                500,
-                "A Full-Stack Developer.",
-                1000,
-                "A problem solver.",
-                1000,
-                "An innovative thinker.",
-                1000,
-                "A....",
-                1000,
-                "A.... cool guy?",
-                1000,
-                "Ok...",
-                1000,
-                "Ok... I'm running out of ideas...",
-                1000,
-                "Uhh...",
-                1000,
-                "Uhh... you can scroll down to see my projects now...",
-                1000,
-                "Seriously, my projects are really cool, go check them out!",
-                1000,
-                "You're uh...",
-                1000,
-                "You're uh... still here?",
-                1000,
-                "Ok, this has been fun, but I'm gonna restart the loop now...",
-                1000,
-                "See ya! :)",
-                500,
-              ]}
-              speed={50}
-              deletionSpeed={65}
-              wrapper="h5"
-              repeat={Infinity}
-            />
-          </div>
-          <p
-            data-aos="zoom-in-up"
-            data-aos-duration="2000"
-            data-aos-once="false"
-            className="hidden md:block px-4 sm:px-8 mb-2 text-white text-lg md:text-xl leading-relaxed"
-          >
-            I'm proficient in building web applications using React.
-          </p>
-          <p
-            data-aos="zoom-in-up"
-            data-aos-duration="2000"
-            data-aos-once="false"
-            className="hidden md:block pl-4 sm:pl-8 text-lg text-white md:text-xl"
-          >
-            I enjoy designing tech websites.
-          </p>
-          <div
-            data-aos="zoom-in-up"
-            data-aos-duration="2000"
-            data-aos-once="false"
-            className="px-4 sm:px-8 mt-7 flex gap-x-4 md:gap-x-5 justify-center md:justify-between flex-col sm:flex-row"
-          >
-            <a
-              href="https://raw.githubusercontent.com/jaykishor-chauhan/resume/main/resume.pdf"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <button className="inline-flex font-medium text-white bg-dark-orange border-2 border-dark-orange py-3 px-7 focus:outline-none hover:bg-cornsilk hover:border-dark-orange hover:text-black rounded-full text-md xl:px-10">
-                Download CV
-                <FaDownload className="mt-1 ml-4" />
+      <div className="relative z-10 container mx-auto px-6 pt-[8rem] lg:pt-[12rem]">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
+          <div className="order-2 lg:order-1 space-y-8 text-left items-start">
+            {/* Greeting */}
+            <div>
+              <p className="text-blue-900 font-extrabold italic text-xl md:text-3xl tracking-wide">
+                Hey, I'm&nbsp;
+                <span
+                  data-aos="zoom-in-up"
+                  data-aos-duration="1500"
+                  data-aos-once="false"
+                  className="md:text-4xl text-[1.76rem] mb-4 font-extrabold italic text-white tracking-wider"
+                >
+                  <span className="text-dark-orange font-serif">
+                    Jaykishor
+                  </span>
+                </span>
+              </p>
+
+            </div>
+            <div className="h-20 flex items-start">
+              <TypeAnimation
+                cursor={true}
+                sequence={[
+                  500,
+                  "A Full-Stack Developer.",
+                  1000,
+                  "A problem solver.",
+                  1000,
+                  "An innovative thinker.",
+                  1000,
+                  "A....",
+                  1000,
+                  "A.... cool guy?",
+                  1000,
+                  "Ok...",
+                  1000,
+                  "Ok... I'm running out of ideas...",
+                  1000,
+                  "Uhh...",
+                  1000,
+                  "Uhh... you can scroll down to see my projects now...",
+                  1000,
+                  "Seriously, my projects are really cool, go check them out!",
+                  1000,
+                  "You're uh...",
+                  1000,
+                  "You're uh... still here?",
+                  1000,
+                  "Ok, this has been fun, but I'm gonna restart the loop now...",
+                  1000,
+                  "See ya! :)",
+                  500,
+                ]}
+                speed={50}
+                deletionSpeed={65}
+                wrapper="p"
+                repeat={Infinity}
+                className="text-2xl lg:text-3xl font-semibold italic text-blue-900 min-h-[3rem]"
+              />
+            </div>
+
+            {/* Description */}
+            <div className="space-y-4 text-slate-600 text-lg leading-relaxed">
+              <p>
+                Passionate about building exceptional web applications using modern technologies like React and creating seamless user experiences.
+              </p>
+              <p>
+                I specialize in crafting clean, efficient code and designing intuitive interfaces that solve real-world problems.
+              </p>
+            </div>
+
+            {/* CTA Section */}
+            <div className="flex flex-col sm:flex-row gap-6 pt-4 items-start">
+              <button 
+                size="lg"
+                className="bg-gradient-to-r from-blue-700 to-dark-orange hover:from-dark-orange hover:to-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 rounded-full px-8 py-3 text-base font-semibold"
+              >
+                <a
+                  href="https://raw.githubusercontent.com/jaykishor-chauhan/resume/main/resume.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-3"
+                >
+                  Download Resume
+                  <Download className="w-4 h-4" />
+                </a>
               </button>
-            </a>
-            <SocialHandles />
+
+              <SocialHandles />
+            </div>
+
+            {/* Scroll indicator */}
+            <div className="pt-8 lg:pt-12">
+              <div className="flex items-center gap-3 text-slate-500">
+                <ArrowDown className="w-5 h-5 animate-bounce" />
+                <span className="text-sm font-medium">Explore my work</span>
+              </div>
+            </div>
+          </div>
+
+
+          {/* Image Section */}
+          <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
+            <div className="relative">
+              {/* Background decoration */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur-2xl opacity-20 scale-110" />
+
+              {/* Main image container */}
+              <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-white bg-gradient-to-br from-slate-100 to-slate-200">
+                <img
+                  className="w-full h-full object-cover object-center transition-transform duration-300 hover:scale-105"
+                  alt="Jaykishor Chauhan - Full Stack Developer"
+                  src="/placeholder.svg"
+                />
+              </div>
+
+              {/* Floating elements */}
+              <div className="absolute -top-4 -right-4 w-12 h-12 bg-blue-500 rounded-full shadow-lg animate-pulse" />
+              <div className="absolute -bottom-6 -left-6 w-16 h-16 bg-purple-500 rounded-full shadow-lg animate-pulse animation-delay-1000" />
+            </div>
           </div>
         </div>
       </div>
-
-      {/* Additional content for projects */}
     </section>
   );
 };

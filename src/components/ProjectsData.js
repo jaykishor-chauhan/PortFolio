@@ -7,8 +7,12 @@ const ProjectsData = [
     id: "1",
     name: "",
     image: "./demo.jpeg",
-    icons: [BiLogoReact, BiLogoCss3, SiThemoviedatabase],
-    description: "Our projects are under development to deliver innovative and engaging platforms—stay tuned for exciting updates!",
+    icons: [
+      { icon: BiLogoReact, name: "React" },
+      { icon: BiLogoCss3, name: "CSS3" },
+      { icon: SiThemoviedatabase, name: "The Movie DB" },
+    ],
+    description: "",
     github: "#",
     demo: "#",
   },
@@ -16,8 +20,14 @@ const ProjectsData = [
     id: "2",
     name: "",
     image: "./demo.jpeg",
-    icons: [BiLogoReact, BiLogoTailwindCss, TbApi, TbDatabase],
-    description: "Our projects are under development to deliver innovative and engaging platforms—stay tuned for exciting updates!",
+    icons: [
+      { icon: BiLogoReact, name: "React" },
+      { icon: BiLogoTailwindCss, name: "Tailwind CSS" },
+      { icon: TbApi, name: "API" },
+      { icon: TbDatabase, name: "Database" },
+    ],
+    description:
+      "Our projects are under development to deliver innovative and engaging platforms—stay tuned for exciting updates!",
     github: "#",
     demo: "#",
   },
@@ -25,8 +35,13 @@ const ProjectsData = [
     id: "3",
     name: "",
     image: "./demo.jpeg",
-    icons: [BiLogoReact, BiLogoTailwindCss, BiLogoFirebase],
-    description: "Our projects are under development to deliver innovative and engaging platforms—stay tuned for exciting updates!",
+    icons: [
+      { icon: BiLogoReact, name: "React" },
+      { icon: BiLogoTailwindCss, name: "Tailwind CSS" },
+      { icon: BiLogoFirebase, name: "Firebase" },
+    ],
+    description:
+      "Our projects are under development to deliver innovative and engaging platforms—stay tuned for exciting updates!",
     github: "#",
     demo: "#",
   },
@@ -34,8 +49,15 @@ const ProjectsData = [
     id: "4",
     name: "",
     image: "./demo.jpeg",
-    icons: [ BiLogoMongodb, SiExpress, BiLogoReact, BiLogoRedux, BiLogoTailwindCss],
-    description: "Our projects are under development to deliver innovative and engaging platforms—stay tuned for exciting updates!",
+    icons: [
+      { icon: BiLogoMongodb, name: "MongoDB" },
+      { icon: SiExpress, name: "Express.js" },
+      { icon: BiLogoReact, name: "React" },
+      { icon: BiLogoRedux, name: "Redux" },
+      { icon: BiLogoTailwindCss, name: "Tailwind CSS" },
+    ],
+    description:
+      "Our projects are under development to deliver innovative and engaging platforms—stay tuned for exciting updates!",
     github: "#",
     demo: "#",
   },
@@ -43,8 +65,14 @@ const ProjectsData = [
     id: "5",
     name: "",
     image: "./demo.jpeg",
-    icons: [TbBrandNextjs, BiLogoTypescript, BiLogoTailwindCss, TbApi],
-    description: "Our projects are under development to deliver innovative and engaging platforms—stay tuned for exciting updates!",
+    icons: [
+      { icon: TbBrandNextjs, name: "Next.js" },
+      { icon: BiLogoTypescript, name: "TypeScript" },
+      { icon: BiLogoTailwindCss, name: "Tailwind CSS" },
+      { icon: TbApi, name: "API" },
+    ],
+    description:
+      "Our projects are under development to deliver innovative and engaging platforms—stay tuned for exciting updates!",
     github: "#",
     demo: "#",
   },
@@ -52,11 +80,18 @@ const ProjectsData = [
     id: "8",
     name: "",
     image: "./demo.jpeg",
-    icons: [TbBrandNextjs, BiLogoTailwindCss, BiLogoMongodb,TbBrandPrisma],
-    description: "Our projects are under development to deliver innovative and engaging platforms—stay tuned for exciting updates!",
+    icons: [
+      { icon: TbBrandNextjs, name: "Next.js" },
+      { icon: BiLogoTailwindCss, name: "Tailwind CSS" },
+      { icon: BiLogoMongodb, name: "MongoDB" },
+      { icon: TbBrandPrisma, name: "Prisma" },
+    ],
+    description:
+      "Our projects are under development to deliver innovative and engaging platforms—stay tuned for exciting updates!",
     github: "#",
     demo: "#",
   },
 ];
+
 
 export default ProjectsData;
